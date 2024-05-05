@@ -1,0 +1,674 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: calc(100vw / 1920 * 10);
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    position: relative;
+}
+
+.loader{
+    width: 100vw;
+    height: 100vh;
+}
+
+.loader-clip{
+    position: absolute;
+    width: 100vw;
+    height: 33.3vh;
+    overflow: clip;
+    z-index: 10000;
+}
+
+.clip-top{
+    top: 0;
+    clip-path: inset(0 0 0 0);
+    background: #000;
+}
+
+.clip-bottom{
+    bottom: 0;
+    clip-path: inset(0 0 0 0);
+    background: #000;
+}
+
+.clip-center{
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 33.3vh;
+    top: 33.3vh;
+}
+
+.marquee {
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200vw;
+    color: #fff;
+    mix-blend-mode: difference;
+    font-size: 12vw;
+}
+
+.clip-center .marquee{
+    color: #000;
+}
+
+.marquee-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Courier Prime", monospace;
+}
+
+.container{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    font-family: "Neue Montreal", sans-serif;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.topbar{
+    position: absolute;
+    top: 0;
+}
+
+.container, .footer, .topbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 2em 4em;
+}
+
+ul,li{
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+}
+
+.langs > li{
+  border-right: 1px solid black;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.langs > li:last-child{
+    border-right: none;
+}
+
+.theme{
+    margin: 0;
+    padding: 5px 10px;
+    border: 0;
+    z-index: 1;
+}
+
+/* cursor */
+
+svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+path{
+    fill: none;
+    stroke-width: 50;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* navigation */
+
+::placeholder {
+    font-family: "Courier Prime", serif;
+    font-weight: 400;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+i {
+    color: #000;
+}
+
+input{
+    font-family: "Courier Prime", serif;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    background: #fff;
+    padding: 0.25em 0.75em 0.3em 0.75em;
+}
+
+button{
+    background-color: #000;
+    color: #fff;
+    padding: 0.35em 0.75em 0.4em 0.75em;
+    border: none;
+    outline: none;
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 100% 70%, 90% 100%, 30% 100%, 0 100%, 0% 100%);
+    font-family: "Courier Prime", serif;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    font-size: 14px;
+    position: relative;
+    z-index: 1000;
+}
+
+button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.submit-button{
+    background: #fff;
+    color: #000;
+}
+
+button:hover{
+    background: #000;
+    color: #fff;
+}
+
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: rgb(0,0,0);
+    clip-path: polygon(
+        49.75% 49.75%,
+        50.25% 49.75%,
+        50.25% 49.75%,
+        49.75% 50.25%
+    );
+
+    pointer-events: none;
+    opacity: 0;
+
+}
+
+.logo{
+    text-transform: uppercase;
+    font-family: "Courier Prime", serif;
+    font-size: 80px;
+    color: #fff;
+}
+
+.close-btn{
+    position: relative;
+    top: -0.5em;
+    width: 50px;
+    height: 40px;
+}
+
+.close-btn:before{
+    content: "";
+    background: #fff;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+}
+.close-btn:after{
+    content: "";
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: #fff;
+}
+
+.col{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.col .logo, .col .tagline{
+    flex: 2;
+}
+
+.col .tagline{
+    display: flex;
+    gap: 7em;
+    padding: 1em 0;
+}
+
+.toggle,
+.close-btn{
+    cursor: pointer;
+}
+
+.divider{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5px;
+    height: 0%;
+    background: #fff;
+}
+
+.nav-container{
+    position: absolute;
+    text-align: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    z-index: 10;
+}
+
+.whitespace{
+    width: 100%;
+    height: 80px;
+}
+
+.item{
+    display: flex;
+    border-top: 1px dashed #fff;
+    padding: 1em;
+    font-family: "Courier Prime", serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.col-1{
+    flex: 2;
+    color: #8a8a8a;
+    text-transform: lowercase;
+}
+
+.col-2{
+    flex: 4;
+}
+
+.connect, .legal, .newsletter{
+    flex: 1;
+}
+
+.about{
+    flex: 10;
+}
+
+.link{
+    position: relative;
+    top: -5px;
+}
+
+.about .col-2 a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 42px;
+}
+
+.langs li{
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* letters */
+
+.letters{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    z-index: 0;
+}
+
+.section_container{
+    display: flex;
+    width: 100%;
+    height: inherit;
+}
+
+.section_col{
+    position: relative;
+    width: 60rem;
+    border-right: 1px solid #d9d9d9;
+    padding: 8rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    transition: .2s all ease-in-out;
+    overflow: hidden;
+}
+
+.section_col:last-child{
+    border: none;
+}
+
+.section_col.active{
+    width: 200rem;
+    transition: .2s all ease-in-out;
+    transform-origin: left;
+}
+
+.section_col.active .section_col_media {
+    opacity: 1;
+    transition: .2s all ease-in-out;
+}
+
+.section_col_media{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0;
+
+    transition: .2s all ease-in-out;
+}
+
+.section_col_media::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    background-color: #fff;
+    opacity: 0.4;
+}
+
+img.section_col_image{
+    position: relative;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+
+.section_col_caption{
+    text-align: center;
+    width: 24rem;
+    font-size: 2rem;
+}
+
+
+.section_col_title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    font-size: 12rem;
+    line-height: 0.8;
+}
+
+.letters h1{
+    font-size: 25rem;
+}
+
+h2{
+    font-family: "Courier Prime", serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.letters h2{
+    font-size: 3rem;
+}
+
+/* projects */
+
+.projects{
+    position: relative;
+    padding-bottom: 8rem;
+}
+
+.nav{
+    /*position: absolute;*/
+    margin-top: 5rem;
+    left: 0;
+    top: -25%;
+    width: 100%;
+    padding: 6.4rem 3.2rem;
+    font-size: 3rem;
+    overflow: hidden;
+}
+
+.nav_wrapper{
+    /*display: grid;*/
+    /*grid-template-columns: repeat(3, 1fr);*/
+    /*grid-template-rows: 1fr;*/
+}
+.nav_list{
+    display: flex;
+    width: 100%;
+    gap: 1.6rem;
+    grid-area: 1/1/2/2;
+    font-family: "Courier Prime", serif;
+}
+.nav_list_item{
+    cursor: pointer;
+}
+.nav_list_item.active{
+    text-decoration: underline;
+}
+.nav_description{
+    grid-area: 1/2/2/3;
+}
+.nav_description p{
+    margin-bottom: 1.6rem;
+}
+.view{
+    position: relative;
+    width: 100%;
+    margin-top: 5rem;
+    padding: 2rem;
+    overflow: hidden;
+    font-family: "Courier Prime", serif;
+}
+.view_item{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    cursor: pointer;
+
+}
+.view_info{
+    display: inherit;
+    gap: inherit;
+
+}
+.view_info_text span{
+    display: block;
+
+}
+.view_info_media{
+    display: flex;
+    gap: 1rem;
+
+}
+.view_info_media_image{
+    position: relative;
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+    background-color: #181818;
+}
+.view_text{
+    display: inline-flex;
+    align-items: flex-end;
+    white-space: nowrap;
+}
+.view_text h1:nth-child(2){
+    opacity: 0.4;
+}
+
+/* team */
+
+.team{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.marquee-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.marquee-wrapper.t-1{
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.team_name{
+    font-family: "Courier Prime", serif;
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 240px;
+    text-transform: uppercase;
+    font-weight: 400;
+    width: 100%;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0%, -50%); }
+    50% { transform: translate(-5%, -50%); }
+    50.5% { transform: translate(-5%, -50%); }
+    100% { transform: translate(0%, -50%); }
+}
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 700px;
+}
+
+.modal-images{
+    width: 100%;
+    height: 600px;
+}
+
+.role{
+    margin: 5px 0;
+}
+
+.img{
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img#t-1 {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.info{
+    margin-top: 24px;
+}
+
+.t-1{
+    background: #fff;
+}
+.t-2{
+    background: #520000;
+}
+.t-3{
+    background: #fff;
+}
+.t-4{
+    background: #8e908a;
+}
+
+@media(max-width: 900px){
+    .modal{
+        width: 400px;
+        height: 600px;
+    }
+    .modal-images{
+        width: 100%;
+        height: 500px;
+    }
+    .img{
+        width: 100%;
+        height: 500px;
+    }
+}
+
+.info .name{
+    font-size: 20px;
+}
+.info .role{
+    font-size: 15px;
+}
